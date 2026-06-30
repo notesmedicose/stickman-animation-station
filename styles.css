@@ -1463,12 +1463,15 @@ kbd {
    ===================================================== */
 
 .support-modal-card {
-  width: 420px !important;
+  width: 440px !important;
   max-width: 96vw;
+  max-height: 92vh;          /* Never taller than viewport */
+  display: flex;
+  flex-direction: column;
   border: 1.5px solid rgba(239, 68, 68, 0.4) !important;
   box-shadow: 0 0 40px rgba(239, 68, 68, 0.15), 0 20px 60px rgba(0, 0, 0, 0.6) !important;
   position: relative;
-  overflow: hidden;
+  overflow: hidden;           /* Card clips the shimmer bar */
   padding: 0 !important;
 }
 
@@ -1492,15 +1495,16 @@ kbd {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 6px;
-  padding: 32px 24px 20px;
+  gap: 4px;
+  padding: 20px 24px 14px;    /* Reduced from 32px top */
   background: radial-gradient(ellipse at top, rgba(239, 68, 68, 0.1) 0%, transparent 70%);
   border-bottom: 1px solid var(--border-color);
+  flex-shrink: 0;             /* Never shrink the header */
 }
 
 .support-heart-ring {
-  width: 72px;
-  height: 72px;
+  width: 54px;               /* Reduced from 72px */
+  height: 54px;
   border-radius: 50%;
   background: rgba(239, 68, 68, 0.12);
   border: 2px solid rgba(239, 68, 68, 0.35);
@@ -1541,11 +1545,14 @@ kbd {
 }
 
 .support-modal-body {
-  padding: 20px 24px 24px;
+  padding: 14px 20px 18px;   /* Tighter than 20/24 */
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 16px;
+  gap: 10px;                 /* Reduced from 16px */
+  overflow-y: auto;          /* Scrollable if content still overflows */
+  flex: 1;
+  min-height: 0;
 }
 
 .support-desc {
@@ -1578,8 +1585,8 @@ kbd {
 }
 
 .support-qr-wrapper {
-  width: 180px !important;
-  height: 180px !important;
+  width: 150px !important;   /* Reduced from 180px */
+  height: 150px !important;
   box-shadow: 0 6px 30px rgba(0, 0, 0, 0.5), 0 0 0 4px rgba(139, 92, 246, 0.15) !important;
 }
 
@@ -1641,11 +1648,11 @@ kbd {
 .support-dev-info {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
   background: var(--bg-card);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-lg);
-  padding: 10px 16px;
+  padding: 8px 14px;         /* Reduced from 10/16 */
   width: 100%;
 }
 
@@ -1697,11 +1704,41 @@ kbd {
 }
 
 .support-gratitude {
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   color: var(--text-muted);
   text-align: center;
   margin: 0;
   font-style: italic;
+  padding-bottom: 2px;
+}
+
+/* Short viewport tweaks — hide gratitude text, shrink QR further */
+@media (max-height: 600px) {
+  .support-modal-header {
+    padding: 12px 20px 10px;
+  }
+  .support-heart-ring {
+    width: 40px;
+    height: 40px;
+  }
+  .support-heart-ring svg {
+    width: 22px;
+    height: 22px;
+  }
+  .support-qr-wrapper {
+    width: 120px !important;
+    height: 120px !important;
+  }
+  .support-modal-body {
+    gap: 8px;
+    padding: 10px 16px 14px;
+  }
+  .support-gratitude {
+    display: none;           /* Hide the italic note on tiny screens */
+  }
+  .support-desc {
+    display: none;           /* Hide description paragraph on very short screens */
+  }
 }
 
 /* --- Onboarding Slider Modal --- */
