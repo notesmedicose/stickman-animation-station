@@ -156,6 +156,7 @@ window.addEventListener('DOMContentLoaded', () => {
   
   // Initialize onboarding flow for new users and donations
   initOnboarding();
+  initSupportModal();
 
   // Attempt orientation lock to landscape on mobile layout upon first interaction
   const tryLockOrientation = () => {
@@ -1667,11 +1668,10 @@ function initOnboarding() {
     });
   });
 
-  // Heart Support Button: opens the donation slide (Slide 3)
+  // Heart Support Button: opens the dedicated support modal
   if (supportBtn) {
     supportBtn.addEventListener('click', () => {
-      openModal(modal);
-      showSlide(2); // Index 2 is the donation/appreciation slide
+      openModal(document.getElementById('modal-support'));
     });
   }
 
@@ -1690,5 +1690,60 @@ function initOnboarding() {
       openModal(modal);
       showSlide(0);
     }, 800); // Small delay to wow user on load
+  }
+}
+
+// ==========================================================================
+// Support / Appreciation Modal Logic
+// ==========================================================================
+
+function initSupportModal() {
+  const modal = document.getElementById('modal-support');
+  const closeBtn = document.getElementById('btn-close-support');
+  const laterBtn = document.getElementById('btn-support-later');
+  const copyBtn = document.getElementById('btn-copy-upi');
+  const copyText = document.getElementById('upi-copy-text');
+
+  if (!modal) return;
+
+  // Close via X button
+  if (closeBtn) {
+    closeBtn.addEventListener('click', () => closeModal(modal));
+  }
+
+  // Close via "Maybe Later"
+  if (laterBtn) {
+    laterBtn.addEventListener('click', () => closeModal(modal));
+  }
+
+  // Copy UPI ID to clipboard
+  if (copyBtn) {
+    copyBtn.addEventListener('click', () => {
+      const upiId = '8791321313@upi';
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(upiId).then(() => {
+          copyBtn.classList.add('copied');
+          if (copyText) copyText.textContent = 'Copied!';
+          setTimeout(() => {
+            copyBtn.classList.remove('copied');
+            if (copyText) copyText.textContent = 'Copy';
+          }, 2000);
+        }).catch(() => {
+          // Fallback for environments without clipboard API
+          const el = document.createElement('textarea');
+          el.value = upiId;
+          document.body.appendChild(el);
+          el.select();
+          document.execCommand('copy');
+          document.body.removeChild(el);
+          copyBtn.classList.add('copied');
+          if (copyText) copyText.textContent = 'Copied!';
+          setTimeout(() => {
+            copyBtn.classList.remove('copied');
+            if (copyText) copyText.textContent = 'Copy';
+          }, 2000);
+        });
+      }
+    });
   }
 }

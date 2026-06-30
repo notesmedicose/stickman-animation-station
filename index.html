@@ -545,7 +545,67 @@
     </div>
   </div>
 
-  <!-- 7. ONBOARDING SLIDER MODAL -->
+  <!-- 7. SUPPORT / APPRECIATION MODAL -->
+  <div class="modal-overlay" id="modal-support" style="display: none;">
+    <div class="modal-card support-modal-card">
+      <button class="modal-close btn-close-modal" id="btn-close-support">&times;</button>
+
+      <!-- Glowing Header -->
+      <div class="support-modal-header">
+        <div class="support-heart-ring">
+          <svg viewBox="0 0 24 24" width="36" height="36" stroke="#ef4444" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="heart-svg-big"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+        </div>
+        <h2 class="support-modal-title">Support the Developer</h2>
+        <p class="support-modal-subtitle">Made with ❤️ by <strong>Durgesh</strong></p>
+      </div>
+
+      <!-- Body -->
+      <div class="support-modal-body">
+        <p class="support-desc">
+          STICKMAN Animation Station is a free, passion-driven project. If this tool helped your creativity, consider buying Durgesh a coffee ☕ — your appreciation keeps the updates coming!
+        </p>
+
+        <!-- QR Code Card -->
+        <div class="support-qr-card">
+          <div class="support-qr-label">Scan to Pay via UPI</div>
+          <div class="qr-code-wrapper support-qr-wrapper">
+            <img src="donation_qr.jpg" class="qr-code-image" alt="Durgesh UPI QR Code - 8791321313@upi" loading="lazy">
+            <div class="laser-scanner-line"></div>
+          </div>
+          <div class="support-upi-row">
+            <span class="support-upi-label">UPI ID:</span>
+            <code class="support-upi-id" id="upi-id-text">8791321313@upi</code>
+            <button class="btn-copy-upi" id="btn-copy-upi" title="Copy UPI ID">
+              <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+              <span id="upi-copy-text">Copy</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Dev info row -->
+        <div class="support-dev-info">
+          <div class="support-dev-avatar">D</div>
+          <div>
+            <div class="support-dev-name">Durgesh</div>
+            <div class="support-dev-role">Solo Developer &amp; Designer</div>
+          </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="support-actions">
+          <a href="upi://pay?pa=8791321313@upi&pn=Durgesh&cu=INR&am=&tn=Support%20STICKMAN%20Animation%20Station" class="btn btn-primary btn-glow support-pay-btn" id="btn-pay-upi" target="_blank">
+            💸 Pay via UPI App
+          </a>
+          <button class="btn btn-secondary support-close-btn" id="btn-support-later">Maybe Later</button>
+        </div>
+
+        <!-- Gratitude note -->
+        <p class="support-gratitude">Every contribution, no matter how small, means the world. Thank you! 🙏</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 8. ONBOARDING SLIDER MODAL -->
   <div class="modal-overlay" id="modal-onboarding" style="display: none;">
     <div class="modal-card onboarding-card">
       <div class="modal-header">
