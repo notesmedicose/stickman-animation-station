@@ -534,42 +534,43 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Canvas Stack Wrapper */
 .canvas-floating-toolbar {
-  position: absolute;
-  left: -36px; /* Pinned exactly to the left edge of the canvas container */
-  top: 12px;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  z-index: 100;
+  display: none; /* Removed - undo/redo now live in status bar */
 }
 
-.btn-floating-action {
-  width: 28px;
-  height: 28px;
-  border-radius: var(--radius-sm);
-  background: var(--bg-panel);
-  border: 1px solid var(--border-color);
-  color: var(--text-main);
+/* Status bar Undo / Redo buttons */
+.status-undo-redo {
   display: flex;
   align-items: center;
-  justify-content: center;
+  gap: 4px;
+}
+
+.btn-status-action {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 10px;
+  background: var(--bg-panel);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-full);
+  color: var(--text-muted);
+  font-size: 0.7rem;
+  font-weight: 500;
   cursor: pointer;
   transition: all var(--transition-fast);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  font-family: inherit;
+  white-space: nowrap;
 }
-.btn-floating-action:hover:not(:disabled) {
+.btn-status-action:hover:not(:disabled) {
   background: var(--color-secondary-hover);
   color: var(--color-primary);
-  transform: scale(1.08);
+  border-color: var(--color-primary-glow);
 }
-.btn-floating-action:disabled {
-  opacity: 0.3;
+.btn-status-action:disabled {
+  opacity: 0.35;
   cursor: not-allowed;
 }
-.btn-floating-action svg {
-  width: 14px;
-  height: 14px;
+.btn-status-action svg {
+  flex-shrink: 0;
 }
 
 .canvas-wrapper-outer {
