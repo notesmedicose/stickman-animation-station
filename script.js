@@ -1502,12 +1502,23 @@ function setCanvasBackground(bg) {
 // Modal handling
 function openModal(el) {
   if (!el) return;
+  el.style.display = 'flex'; // Remove inline display:none first
+  // Force reflow so the transition fires
+  el.offsetHeight; // eslint-disable-line no-unused-expressions
   el.classList.add('show');
 }
 
 function closeModal(el) {
   if (!el) return;
   el.classList.remove('show');
+  // Wait for transition to finish before hiding completely
+  const onEnd = () => {
+    if (!el.classList.contains('show')) {
+      el.style.display = 'none';
+    }
+    el.removeEventListener('transitionend', onEnd);
+  };
+  el.addEventListener('transitionend', onEnd);
 }
 
 function closeActiveModals() {
