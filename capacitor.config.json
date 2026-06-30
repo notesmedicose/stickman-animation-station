@@ -1,0 +1,6 @@
+{
+  "appId": "com.notesmedicose.stickmananimation",
+  "appName": "STICKMAN Animation Station",
+  "webDir": "www",
+  "bundledWebRuntime": false
+}

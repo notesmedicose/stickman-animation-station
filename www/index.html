@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>STICKMAN Animation Station | Professional Cartoon & Flipbook Maker</title>
+
+  <!-- Meta tags for SEO & branding -->
+  <meta name="description"
+    content="Create stunning frame-by-frame stickman cartoons with STICKMAN Animation Station. Features professional 35% Onion Skinning, 30 FPS playback, and 1080p MP4/GIF exports. Designed by Durgesh.">
+  <meta name="keywords"
+    content="stickman animation, cartoon maker, frame by frame, 2d animation, onion skinning, 1080p mp4, gif creator, flipbook, durgesh, web animator">
+  <meta name="author" content="Durgesh">
+  <meta name="theme-color" content="#8b5cf6">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="STICKMAN Animation Station | Professional Cartoon Maker">
+  <meta property="og:description"
+    content="Create, preview, and export high-definition stickman animations at up to 30 FPS. Drag-and-drop vector shape tools, 35% ghost onion skinning.">
+  <meta property="og:image" content="donation_qr.jpg">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:title" content="STICKMAN Animation Station | Professional Cartoon Maker">
+  <meta property="twitter:description"
+    content="Create, preview, and export high-definition stickman animations at up to 30 FPS. Drag-and-drop vector shape tools, 35% ghost onion skinning.">
+
+  <!-- Google Fonts: Outfit (headings) & Inter (UI details) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet">
+
+  <!-- Link stylesheet -->
+  <link rel="stylesheet" href="styles.css?v=6">
+
+  <!-- GIF Shot Library for exporting GIFs in browser -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gifshot/0.4.5/gifshot.min.js" defer></script>
+</head>
+
+<body class="dark-theme">
+
+  <!-- ==================== MAIN HEADER ==================== -->
+  <header class="main-header">
+    <div class="header-logo">
+      <div class="logo-icon">
+        <img src="icon.png" alt="STICKMAN Animation Station Logo" class="app-logo-img">
+      </div>
+      <h1 class="logo-title">STICKMAN <span class="logo-subtitle">Animation Station</span></h1>
+    </div>
+
+    <div class="header-actions">
+      <!-- Project Selection & Management -->
+      <div class="project-selector-wrapper">
+        <select id="header-project-select" class="custom-select header-project-select" title="Switch Project">
+          <option value="0">Project 1</option>
+          <option value="1">Project 2</option>
+          <option value="2">Project 3</option>
+        </select>
+        <button id="btn-rename-current-project" class="btn btn-secondary btn-header-icon"
+          title="Rename Active Project">
+          <svg viewBox="0 0 24 24" class="header-icon-svg" stroke="currentColor" stroke-width="2" fill="none"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 20h9"></path>
+            <path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"></path>
+          </svg>
+        </button>
+      </div>
+
+      <button id="btn-toggle-toolbox" class="btn btn-secondary" title="Open Toolbox (Left Sidebar)">
+        <svg viewBox="0 0 24 24" class="header-icon-svg" stroke="currentColor" stroke-width="2" fill="none"
+          stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+          <line x1="9" y1="3" x2="9" y2="21"></line>
+        </svg>
+        <span class="btn-text">Toolbox</span>
+      </button>
+      <button id="btn-toggle-settings" class="btn btn-secondary" title="Open Project Settings (Right Sidebar)">
+        <svg viewBox="0 0 24 24" class="header-icon-svg" stroke="currentColor" stroke-width="2" fill="none"
+          stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="3"></circle>
+          <path
+            d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z">
+          </path>
+        </svg>
+        <span class="btn-text">Settings</span>
+      </button>
+
+      <div class="divider"></div>
+
+      <!-- Quick Save / Load in LocalStorage -->
+      <button id="btn-save-project" class="btn btn-secondary" title="Save Project to Browser">
+        <svg viewBox="0 0 24 24" class="header-icon-svg" stroke="currentColor" stroke-width="2" fill="none"
+          stroke-linecap="round" stroke-linejoin="round">
+          <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path>
+          <polyline points="17 21 17 13 7 13 7 21"></polyline>
+          <polyline points="7 3 7 8 15 8"></polyline>
+        </svg>
+        <span class="btn-text">Save</span>
+      </button>
+      <button id="btn-load-project" class="btn btn-secondary" title="Load Last Saved Project">
+        <svg viewBox="0 0 24 24" class="header-icon-svg" stroke="currentColor" stroke-width="2" fill="none"
+          stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+          <polyline points="7 10 12 15 17 10"></polyline>
+          <line x1="12" y1="15" x2="12" y2="3"></line>
+        </svg>
+        <span class="btn-text">Load</span>
+      </button>
+
+      <div class="divider"></div>
+
+      <!-- Export Menu -->
+      <div class="dropdown-wrapper">
+        <button id="btn-export-trigger" class="btn btn-primary btn-glow">
+          <svg viewBox="0 0 24 24" class="header-icon-svg" stroke="currentColor" stroke-width="2.5" fill="none"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="17 8 12 3 7 8"></polyline>
+            <line x1="12" y1="3" x2="12" y2="15"></line>
+          </svg>
+          <span class="btn-text">Export...</span>
+        </button>
+        <div id="export-dropdown" class="dropdown-menu">
+          <button id="btn-export-video-16-9" class="dropdown-item">
+            <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"
+              stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"></rect>
+              <line x1="7" y1="2" x2="7" y2="22"></line>
+              <line x1="17" y1="2" x2="17" y2="22"></line>
+              <line x1="2" y1="12" x2="22" y2="12"></line>
+              <line x1="2" y1="7" x2="7" y2="7"></line>
+              <line x1="2" y1="17" x2="7" y2="17"></line>
+              <line x1="17" y1="17" x2="22" y2="17"></line>
+              <line x1="17" y1="7" x2="22" y2="7"></line>
+            </svg>
+            Export MP4 (16:9 Landscape 1080p)
+          </button>
+          <button id="btn-export-video-9-16" class="dropdown-item">
+            <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"
+              stroke-linecap="round" stroke-linejoin="round" style="transform: rotate(90deg);">
+              <rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"></rect>
+              <line x1="7" y1="2" x2="7" y2="22"></line>
+              <line x1="17" y1="2" x2="17" y2="22"></line>
+              <line x1="2" y1="12" x2="22" y2="12"></line>
+              <line x1="2" y1="7" x2="7" y2="7"></line>
+              <line x1="2" y1="17" x2="7" y2="17"></line>
+              <line x1="17" y1="17" x2="22" y2="17"></line>
+              <line x1="17" y1="7" x2="22" y2="7"></line>
+            </svg>
+            Export MP4 (9:16 Portrait 1080p)
+          </button>
+          <button id="btn-export-gif" class="dropdown-item">
+            <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"
+              stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+              <circle cx="8.5" cy="8.5" r="1.5"></circle>
+              <polyline points="21 15 16 10 5 21"></polyline>
+            </svg>
+            Export GIF Animation
+          </button>
+        </div>
+      </div>
+
+      <button id="btn-clear-all" class="btn btn-danger" title="Clear all frames and start over">
+        <svg viewBox="0 0 24 24" class="header-icon-svg" stroke="currentColor" stroke-width="2" fill="none"
+          stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="3 6 5 6 21 6"></polyline>
+          <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+          <line x1="10" y1="11" x2="10" y2="17"></line>
+          <line x1="14" y1="11" x2="14" y2="17"></line>
+        </svg>
+        <span class="btn-text">Clear All</span>
+      </button>
+
+      <!-- Migrated Support Button (moved from header-logo to header-actions) -->
+      <button id="btn-support" class="btn btn-icon btn-heart migrated-heart"
+        title="Support & Appreciate Developer (Durgesh)">
+        <svg viewBox="0 0 24 24" class="header-icon-svg" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"
+          stroke-linecap="round" stroke-linejoin="round" class="heart-svg">
+          <path
+            d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z">
+          </path>
+        </svg>
+      </button>
+
+      <button id="btn-toggle-theme" class="btn btn-icon" title="Toggle Theme (Light/Dark)">
+        <svg id="theme-icon-sun" viewBox="0 0 24 24" class="header-icon-svg" width="16" height="16" stroke="currentColor" stroke-width="2"
+          fill="none" stroke-linecap="round" stroke-linejoin="round" style="display: none;">
+          <circle cx="12" cy="12" r="5"></circle>
+          <line x1="12" y1="1" x2="12" y2="3"></line>
+          <line x1="12" y1="21" x2="12" y2="23"></line>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+          <line x1="1" y1="12" x2="3" y2="12"></line>
+          <line x1="21" y1="12" x2="23" y2="12"></line>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </svg>
+        <svg id="theme-icon-moon" viewBox="0 0 24 24" class="header-icon-svg" width="16" height="16" stroke="currentColor" stroke-width="2"
+          fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+      </button>
+
+      <button id="btn-show-help" class="btn btn-icon" title="Keyboard Shortcuts & Help">
+        <svg viewBox="0 0 24 24" class="header-icon-svg" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"
+          stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"></circle>
+          <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+          <line x1="12" y1="17" x2="12.01" y2="17"></line>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- ==================== MAIN WORKSPACE ==================== -->
+  <main class="workspace-container">
+
+    <!-- LEFT SIDEBAR: DRAWING TOOLS -->
+    <aside class="sidebar-left glass-panel" id="sidebar-left">
+      <div class="sidebar-close-container">
+        <button id="btn-close-left-sidebar" class="btn-close-sidebar" title="Close Toolbox">&times;</button>
+      </div>
+      <div class="panel-section">
+        <h3>Drawing Tools</h3>
+        <div class="tool-grid">
+          <button id="tool-pencil" class="tool-btn active" title="Pencil (fine line)">
+            <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2.2" fill="none"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+              <path d="M18.5 2.5a2.121 2.121 0 1 1 3 3L12 15l-4 1 1-4z"></path>
+            </svg>
+            <span>Pencil</span>
+          </button>
+
+          <button id="tool-brush" class="tool-btn" title="Brush (smooth/thick)">
+            <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2.2" fill="none"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+              <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+            </svg>
+            <span>Brush</span>
+          </button>
+
+          <button id="tool-eraser" class="tool-btn" title="Eraser">
+            <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2.2" fill="none"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 20H7L3 16c-.5-.5-.5-1.3 0-1.8l10-10c.5-.5 1.3-.5 1.8 0l5.2 5.2c.5.5.5 1.3 0 1.8L12 20">
+              </path>
+              <line x1="12" y1="11" x2="16.5" y2="15.5"></line>
+            </svg>
+            <span>Eraser</span>
+          </button>
+
+          <button id="tool-bucket" class="tool-btn" title="Flood Fill">
+            <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2.2" fill="none"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22a7 7 0 0 0 7-7c0-4.3-7-11-7-11S5 10.7 5 15a7 7 0 0 0 7 7z"></path>
+            </svg>
+            <span>Fill</span>
+          </button>
+
+          <button id="tool-line" class="tool-btn" title="Draw Straight Line">
+            <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2.2" fill="none"
+              stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="19" x2="19" y2="5"></line>
+              <circle cx="5" cy="19" r="1.5"></circle>
+              <circle cx="19" cy="5" r="1.5"></circle>
+            </svg>
+            <span>Line</span>
+          </button>
+
+          <button id="tool-rect" class="tool-btn" title="Draw Rectangle">
+            <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2.2" fill="none"
+              stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+            </svg>
+            <span>Rect</span>
+          </button>
+
+          <button id="tool-circle" class="tool-btn" title="Draw Circle">
+            <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2.2" fill="none"
+              stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+            </svg>
+            <span>Circle</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="panel-section">
+        <div class="slider-header">
+          <span>Brush Size</span>
+          <span id="brush-size-val">8px</span>
+        </div>
+        <div class="slider-container">
+          <input type="range" id="slider-brush-size" min="1" max="100" value="8" class="custom-slider">
+        </div>
+      </div>
+
+      <div class="panel-section">
+        <div class="slider-header">
+          <span>Brush Opacity</span>
+          <span id="brush-opacity-val">100%</span>
+        </div>
+        <div class="slider-container">
+          <input type="range" id="slider-brush-opacity" min="1" max="100" value="100" class="custom-slider">
+        </div>
+      </div>
+
+      <div class="panel-section select-palette">
+        <h3>Palette</h3>
+        <div class="palette-grid" id="palette-colors">
+          <!-- Populated by JS -->
+        </div>
+
+        <div class="custom-color-container">
+          <label for="color-picker" class="custom-color-label">
+            <input type="color" id="color-picker" value="#9b5de5">
+            <span class="custom-color-preview" id="color-preview-node"></span>
+            <span>Custom Color</span>
+          </label>
+        </div>
+      </div>
+    </aside>
+
+    <!-- CENTER: CANVAS AREA -->
+    <section class="canvas-workspace">
+
+      <!-- Canvas Status info -->
+      <div class="canvas-status">
+        <span class="status-badge" id="badge-active-frame">Frame: 1 / 1</span>
+        <span class="status-badge" id="badge-active-tool">Tool: Pencil</span>
+        <span class="status-badge cursor-coords" id="badge-cursor-coords">0, 0</span>
+        <!-- Undo / Redo inline inside status bar -->
+        <div class="status-undo-redo">
+          <button id="btn-undo" class="btn-status-action" title="Undo (Ctrl+Z)" disabled>
+            <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 7v6h6"></path>
+              <path d="M21 17a9 9 0 0 0-9-9 9 9 0 0 0-6 2.3L3 13"></path>
+            </svg>
+            Undo
+          </button>
+          <button id="btn-redo" class="btn-status-action" title="Redo (Ctrl+Y)" disabled>
+            <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 7v6h-6"></path>
+              <path d="M3 17a9 9 0 0 1 9-9 9 9 0 0 1 6 2.3l3 2.7"></path>
+            </svg>
+            Redo
+          </button>
+        </div>
+      </div>
+
+      <!-- Container for canvases stacked -->
+      <div class="canvas-wrapper-outer">
+        <div class="canvas-wrapper" id="canvas-container">
+          <!-- Onion Skin Canvas (Underneath) -->
+          <canvas id="onion-skin-canvas" class="canvas-layer onion-skin-layer" width="800" height="500"></canvas>
+
+          <!-- Drawing Canvas (Active Drawing) -->
+          <canvas id="drawing-canvas" class="canvas-layer drawing-layer" width="800" height="500"></canvas>
+
+          <!-- Grid Overlay Layer -->
+          <div id="grid-overlay" class="grid-overlay-layer hidden"></div>
+        </div>
+      </div>
+
+      <!-- Quick Floating Control Box below canvas -->
+      <div class="quick-controls glass-panel">
+        <button id="btn-playback-first" class="btn-control" title="Go to First Frame">
+          <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none"
+            stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="19 20 9 12 19 4 19 20"></polygon>
+            <line x1="5" y1="19" x2="5" y2="5"></line>
+          </svg>
+        </button>
+        <button id="btn-playback-prev" class="btn-control" title="Previous Frame (Left Arrow)">
+          <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none"
+            stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="19 20 9 12 19 4 19 20"></polygon>
+          </svg>
+        </button>
+
+        <button id="btn-playback-play" class="btn-control btn-play-pause" title="Play / Pause Animation (Space)">
+          <!-- Play Icon -->
+          <svg id="icon-play" viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" stroke-width="2"
+            fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="5 3 19 12 5 21 5 3"></polygon>
+          </svg>
+          <!-- Pause Icon -->
+          <svg id="icon-pause" viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" stroke-width="2"
+            fill="none" stroke-linecap="round" stroke-linejoin="round" style="display:none;">
+            <rect x="6" y="4" width="4" height="16"></rect>
+            <rect x="14" y="4" width="4" height="16"></rect>
+          </svg>
+        </button>
+
+        <button id="btn-playback-next" class="btn-control" title="Next Frame (Right Arrow)">
+          <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none"
+            stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="5 4 15 12 5 20 5 4"></polygon>
+          </svg>
+        </button>
+        <button id="btn-playback-last" class="btn-control" title="Go to Last Frame">
+          <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none"
+            stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="5 4 15 12 5 20 5 4"></polygon>
+            <line x1="19" y1="5" x2="19" y2="19"></line>
+          </svg>
+        </button>
+
+        <div class="control-divider"></div>
+
+        <!-- Loop switch -->
+        <label class="toggle-switch-container" title="Loop playback continuously">
+          <input type="checkbox" id="checkbox-loop" checked>
+          <span class="slider-switch"></span>
+          <span class="switch-label">Loop</span>
+        </label>
+      </div>
+    </section>
+
+    <!-- RIGHT SIDEBAR: ANIMATION SETTINGS -->
+    <aside class="sidebar-right glass-panel" id="sidebar-right">
+      <div class="sidebar-close-container">
+        <button id="btn-close-right-sidebar" class="btn-close-sidebar" title="Close Settings">&times;</button>
+      </div>
+
+      <div class="panel-section">
+        <h3>Project Manager</h3>
+        <div class="projects-sidebar-list" id="sidebar-projects-list">
+          <!-- Dynamically populated in script.js -->
+        </div>
+      </div>
+
+      <div class="panel-section">
+        <h3>Playback Settings</h3>
+        <div class="slider-header">
+          <span>Speed (FPS)</span>
+          <span id="fps-val">8 frames/s</span>
+        </div>
+        <div class="slider-container">
+          <input type="range" id="slider-fps" min="1" max="30" value="8" class="custom-slider">
+        </div>
+
+        <div class="fps-presets">
+          <button class="preset-badge" data-fps="2">2 FPS</button>
+          <button class="preset-badge" data-fps="5">5 FPS</button>
+          <button class="preset-badge active" data-fps="8">8 FPS</button>
+          <button class="preset-badge" data-fps="12">12 FPS</button>
+          <button class="preset-badge" data-fps="24">24 FPS</button>
+          <button class="preset-badge" data-fps="30">30 FPS</button>
+        </div>
+      </div>
+
+      <div class="panel-section">
+        <h3>Onion Skinning</h3>
+        <label class="toggle-switch-container m-b-3" title="Show ghost of adjacent frames">
+          <input type="checkbox" id="checkbox-onion-skin" checked>
+          <span class="slider-switch"></span>
+          <span class="switch-label">Onion Skin Active</span>
+        </label>
+
+        <div class="slider-header">
+          <span>Ghost Opacity</span>
+          <span id="onion-opacity-val">35%</span>
+        </div>
+        <div class="slider-container">
+          <input type="range" id="slider-onion-opacity" min="5" max="90" value="35" class="custom-slider">
+        </div>
+
+        <div class="onion-mode-container m-t-2">
+          <span>Frames: </span>
+          <select id="onion-direction" class="custom-select">
+            <option value="prev">Previous Only</option>
+            <option value="both">Prev & Next</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="panel-section">
+        <h3>Canvas Options</h3>
+        <div class="ratio-select-container m-b-3">
+          <span class="block m-b-1 font-semibold" style="font-size: 0.85rem;">Project Ratio</span>
+          <select id="project-aspect-ratio" class="custom-select w-full">
+            <option value="16:9">16:9 Landscape</option>
+            <option value="9:16">9:16 Portrait</option>
+          </select>
+        </div>
+        <label class="toggle-switch-container m-b-3" title="Show aligned alignment lines">
+          <input type="checkbox" id="checkbox-grid">
+          <span class="slider-switch"></span>
+          <span class="switch-label">Show Drawing Grid</span>
+        </label>
+
+        <div class="color-picker-item">
+          <span>Canvas Background</span>
+          <div class="bg-picker-options">
+            <button class="bg-option active" data-bg="#ffffff" style="background-color: #ffffff;"
+              title="White"></button>
+            <button class="bg-option" data-bg="#f4f5f7" style="background-color: #f4f5f7;" title="Light Gray"></button>
+            <button class="bg-option" data-bg="#222222" style="background-color: #222222; border: 1px solid #444;"
+              title="Dark Charcoal"></button>
+            <button class="bg-option" data-bg="transparent" class="bg-transparent" title="Transparent Grid">
+              <span class="checkered-icon"></span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel-section quick-instructions">
+        <h3>Quick Tips</h3>
+        <ul class="tips-list">
+          <li><strong>Spacebar:</strong> Play / Pause</li>
+          <li><strong>Right/Left:</strong> Next/Prev frame</li>
+          <li><strong>Ctrl + Z:</strong> Undo</li>
+          <li><strong>Ctrl + Y:</strong> Redo</li>
+          <li><strong>[ / ]:</strong> Change brush size</li>
+          <li><strong>F:</strong> Fill Canvas (when bucket selected)</li>
+        </ul>
+      </div>
+    </aside>
+
+  </main>
+
+  <!-- ==================== TIMELINE RIBBON (BOTTOM) ==================== -->
+  <footer class="timeline-container">
+    <div class="timeline-controls">
+      <button id="btn-timeline-add" class="btn btn-primary" title="Insert New Blank Frame">
+        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
+          stroke-linecap="round" stroke-linejoin="round">
+          <line x1="12" y1="5" x2="12" y2="19"></line>
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+        </svg>
+        + Frame
+      </button>
+
+      <button id="btn-timeline-duplicate" class="btn btn-secondary"
+        title="Duplicate active frame to next slot (Ctrl+D)">
+        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none"
+          stroke-linecap="round" stroke-linejoin="round">
+          <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+          <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+        </svg>
+        Duplicate
+      </button>
+
+      <button id="btn-timeline-copy-prev" class="btn btn-secondary" title="Copy current drawing to next frame">
+        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none"
+          stroke-linecap="round" stroke-linejoin="round">
+          <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
+          <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
+        </svg>
+        Copy Frame
+      </button>
+    </div>
+
+    <div class="timeline-reel-wrapper">
+      <div class="timeline-reel" id="timeline-frames">
+        <!-- Dynamic Frame Cards loaded by JS -->
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==================== MODALS & DIALOGS ==================== -->
+
+  <!-- 1. WELCOME / HELP MODAL -->
+  <div class="modal-overlay" id="modal-help">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h2>Welcome to Animation Station!</h2>
+        <button class="modal-close btn-close-modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p>Creating animation is simple and extremely fun! Draw on a frame, add another frame, and watch it come to
+          life.</p>
+
+        <h3>Onion Skinning (35% Ghosting)</h3>
+        <p>You can see a faded version (default <strong>35% opacity</strong>) of your previous drawing directly in the
+          background. Use this to trace the motion step-by-step!</p>
+
+        <h3>Keyboard Shortcuts</h3>
+        <table class="shortcuts-table">
+          <tr>
+            <td><kbd>Spacebar</kbd></td>
+            <td>Play / Pause your animation</td>
+          </tr>
+          <tr>
+            <td><kbd>&rarr;</kbd> or <kbd>D</kbd></td>
+            <td>Go to Next Frame</td>
+          </tr>
+          <tr>
+            <td><kbd>&larr;</kbd> or <kbd>A</kbd></td>
+            <td>Go to Previous Frame</td>
+          </tr>
+          <tr>
+            <td><kbd>Ctrl</kbd> + <kbd>Z</kbd></td>
+            <td>Undo your last stroke</td>
+          </tr>
+          <tr>
+            <td><kbd>Ctrl</kbd> + <kbd>Y</kbd></td>
+            <td>Redo your last stroke</td>
+          </tr>
+          <tr>
+            <td><kbd>[</kbd> and <kbd>]</kbd></td>
+            <td>Decrease / Increase brush size</td>
+          </tr>
+          <tr>
+            <td><kbd>Escape</kbd></td>
+            <td>Close modals</td>
+          </tr>
+        </table>
+
+        <div class="modal-actions">
+          <button class="btn btn-primary btn-close-modal w-full">Let's Draw!</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. EXPORTING PROGRESS MODAL -->
+  <div class="modal-overlay" id="modal-exporting">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h2>Exporting Animation</h2>
+      </div>
+      <div class="modal-body text-center">
+        <p id="exporting-message">Preparing your animation, rendering frames...</p>
+        <div class="progress-container">
+          <div class="progress-bar" id="exporting-progress-bar" style="width: 0%;"></div>
+        </div>
+        <p class="exporting-subtext">Please don't close this tab.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. EXPORT SUCCESS / DOWNLOAD MODAL -->
+  <div class="modal-overlay" id="modal-download">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h2>Export Complete!</h2>
+        <button class="modal-close btn-close-modal">&times;</button>
+      </div>
+      <div class="modal-body text-center">
+        <p id="download-message">Your animation is ready for download!</p>
+
+        <!-- Video/GIF Preview -->
+        <div class="export-preview-container">
+          <video id="export-video-preview" controls autoplay loop class="export-preview hidden"></video>
+          <img id="export-gif-preview" class="export-preview hidden" alt="GIF Preview">
+        </div>
+
+        <!-- Name selection -->
+        <div class="input-group m-b-4">
+          <label for="input-filename" class="text-left font-semibold block m-b-1">File Name</label>
+          <input type="text" id="input-filename" class="custom-input" value="my_animation">
+        </div>
+
+        <div class="modal-actions-grid">
+          <button class="btn btn-secondary btn-close-modal">Cancel</button>
+          <button id="btn-download-file" class="btn btn-primary btn-glow">
+            <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+              <polyline points="7 10 12 15 17 10"></polyline>
+              <line x1="12" y1="15" x2="12" y2="3"></line>
+            </svg>
+            Download File
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. CONFIRM CLEAR ALL MODAL -->
+  <div class="modal-overlay" id="modal-confirm-clear">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h2>Are you sure?</h2>
+        <button class="modal-close btn-close-modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p>This will erase your entire animation and all frames. This action cannot be undone!</p>
+        <div class="modal-actions-grid m-t-4">
+          <button class="btn btn-secondary btn-close-modal">Keep My Drawing</button>
+          <button id="btn-confirm-clear-yes" class="btn btn-danger">Yes, Delete Everything</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. REWARDED VIDEO AD MODAL -->
+  <div class="modal-overlay" id="modal-reward-ad">
+    <div class="modal-card ad-card">
+      <div class="modal-header">
+        <h2>Sponsored Video Ad</h2>
+        <button id="btn-skip-ad" class="btn btn-secondary btn-sm" title="Skip Ad">Skip Ad</button>
+      </div>
+      <div class="modal-body text-center">
+        <p>Watch this sponsored ad to download your high-definition video!</p>
+
+        <!-- Simulated ad player -->
+        <div class="ad-video-container">
+          <div class="ad-video-mock">
+            <div class="ad-stickman-animated">
+              <!-- Inline stickman svg that dances/animates with CSS -->
+              <svg viewBox="0 0 100 100" class="dancers">
+                <circle cx="50" cy="30" r="8" stroke="white" stroke-width="3" fill="none" />
+                <line x1="50" y1="38" x2="50" y2="65" stroke="white" stroke-width="3" />
+                <!-- Arms -->
+                <line x1="50" y1="45" x2="30" y2="35" stroke="white" stroke-width="3" class="arm-l" />
+                <line x1="50" y1="45" x2="70" y2="35" stroke="white" stroke-width="3" class="arm-r" />
+                <!-- Legs -->
+                <line x1="50" y1="65" x2="35" y2="85" stroke="white" stroke-width="3" class="leg-l" />
+                <line x1="50" y1="65" x2="65" y2="85" stroke="white" stroke-width="3" class="leg-r" />
+              </svg>
+            </div>
+            <div class="ad-commercial-banner">
+              <h3>Create Animations Easily!</h3>
+              <p>STICKMAN Animation Station is now available on Play Store.</p>
+            </div>
+            <div class="ad-overlay-counter" id="ad-counter-badge">15s</div>
+          </div>
+          <div class="ad-progress-bar-container">
+            <div class="ad-progress-bar" id="ad-progress-line" style="width: 100%;"></div>
+          </div>
+        </div>
+
+        <p id="ad-status-message" class="ad-status-msg m-t-2">Ad playing... Please wait.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. PORTRAIT MOBILE LOCK OVERLAY -->
+  <div id="portrait-lock-overlay">
+    <div class="lock-card">
+      <div class="lock-icon">
+        <svg viewBox="0 0 24 24" width="48" height="48" stroke="currentColor" stroke-width="2" fill="none"
+          stroke-linecap="round" stroke-linejoin="round">
+          <rect x="5" y="2" width="14" height="20" rx="2" ry="2" class="phone-frame"></rect>
+          <line x1="12" y1="18" x2="12.01" y2="18" stroke-width="3"></line>
+        </svg>
+      </div>
+      <h2>Rotate Your Device</h2>
+      <p>STICKMAN Animation Station requires Landscape Mode to run. Please turn your phone or tablet sideways!</p>
+    </div>
+  </div>
+
+  <!-- 7. SUPPORT / APPRECIATION MODAL -->
+  <div class="modal-overlay" id="modal-support" style="display: none;">
+    <div class="modal-card support-modal-card">
+      <button class="modal-close btn-close-modal" id="btn-close-support">&times;</button>
+
+      <!-- Glowing Header -->
+      <div class="support-modal-header">
+        <div class="support-heart-ring">
+          <svg viewBox="0 0 24 24" width="36" height="36" stroke="#ef4444" stroke-width="2" fill="none"
+            stroke-linecap="round" stroke-linejoin="round" class="heart-svg-big">
+            <path
+              d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z">
+            </path>
+          </svg>
+        </div>
+        <h2 class="support-modal-title">Support the Developer</h2>
+        <p class="support-modal-subtitle">Made with ❤️ by <strong>Durgesh</strong></p>
+      </div>
+
+      <!-- Body -->
+      <div class="support-modal-body">
+        <p class="support-desc">
+          STICKMAN Animation Station is a free, passion-driven project. If this tool helped your creativity, consider
+          buying Durgesh a coffee ☕ — your appreciation keeps the updates coming!
+        </p>
+
+        <!-- QR Code Card -->
+        <div class="support-qr-card">
+          <div class="support-qr-label">Scan to Pay via UPI</div>
+          <div class="qr-code-wrapper support-qr-wrapper">
+            <img src="donation_qr.jpg" class="qr-code-image" alt="Durgesh UPI QR Code - 8791321313@upi" loading="lazy">
+            <div class="laser-scanner-line"></div>
+          </div>
+          <div class="support-upi-row">
+            <span class="support-upi-label">UPI ID:</span>
+            <code class="support-upi-id" id="upi-id-text">8791321313@upi</code>
+            <button class="btn-copy-upi" id="btn-copy-upi" title="Copy UPI ID">
+              <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+              </svg>
+              <span id="upi-copy-text">Copy</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Dev info row -->
+        <div class="support-dev-info">
+          <div class="support-dev-avatar">D</div>
+          <div>
+            <div class="support-dev-name">Durgesh</div>
+            <div class="support-dev-role">Solo Developer &amp; Designer</div>
+          </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="support-actions">
+          <a href="upi://pay?pa=8791321313@upi&pn=Durgesh&cu=INR&am=&tn=Support%20STICKMAN%20Animation%20Station"
+            class="btn btn-primary btn-glow support-pay-btn" id="btn-pay-upi" target="_blank">
+            💸 Pay via UPI App
+          </a>
+          <button class="btn btn-secondary support-close-btn" id="btn-support-later">Maybe Later</button>
+        </div>
+
+        <!-- Gratitude note -->
+        <p class="support-gratitude">Every contribution, no matter how small, means the world. Thank you! 🙏</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 8. ONBOARDING SLIDER MODAL -->
+  <div class="modal-overlay" id="modal-onboarding" style="display: none;">
+    <div class="modal-card onboarding-card">
+      <div class="modal-header">
+        <h2 id="onboarding-modal-title">Welcome to STICKMAN</h2>
+        <button class="modal-close btn-close-modal" id="btn-close-onboarding">&times;</button>
+      </div>
+      <div class="modal-body text-center">
+
+        <!-- Slides Container -->
+        <div class="onboarding-slides-wrapper">
+
+          <!-- Slide 1: Welcome & Best Wishes -->
+          <div class="onboarding-slide active" data-slide-index="0">
+            <div class="slide-welcome-graphic">
+              <svg viewBox="0 0 100 100" width="80" height="80">
+                <circle cx="50" cy="25" r="12" stroke="var(--color-primary)" stroke-width="3.5" fill="none"
+                  class="pulse-head" />
+                <line x1="50" y1="37" x2="50" y2="65" stroke="var(--text-main)" stroke-width="3" />
+                <line x1="50" y1="45" x2="28" y2="32" stroke="var(--text-main)" stroke-width="3"
+                  stroke-linecap="round" />
+                <line x1="50" y1="45" x2="72" y2="32" stroke="var(--text-main)" stroke-width="3"
+                  stroke-linecap="round" />
+                <line x1="50" y1="65" x2="35" y2="90" stroke="var(--text-main)" stroke-width="3"
+                  stroke-linecap="round" />
+                <line x1="50" y1="65" x2="65" y2="90" stroke="var(--text-main)" stroke-width="3"
+                  stroke-linecap="round" />
+              </svg>
+            </div>
+            <h3 class="m-b-2 text-primary">Best Wishes for Your Creative Journey! ✨</h3>
+            <p class="slide-description">
+              Welcome to <strong>STICKMAN Animation Station</strong>! We wish you the absolute best as you explore the
+              world of animation. Whether you want to sketch, create short memes, or design action stickman battle
+              sequences, this app is fully geared to make the process smooth and easy. Let your creativity run wild!
+            </p>
+          </div>
+
+          <!-- Slide 2: Feature Explanations -->
+          <div class="onboarding-slide" data-slide-index="1" style="display: none;">
+            <h3 class="m-b-3 text-primary">Professional Features</h3>
+            <div class="features-onboarding-grid">
+              <div class="feature-card-item">
+                <div class="feat-icon-badge">🧅</div>
+                <div class="feat-details">
+                  <h5>Onion Skinning</h5>
+                  <p>Ghost previous/next frames with adjustable 35% opacity to trace motion fluidly.</p>
+                </div>
+              </div>
+              <div class="feature-card-item">
+                <div class="feat-icon-badge">🎬</div>
+                <div class="feat-details">
+                  <h5>30 FPS Speed</h5>
+                  <p>Flexible animation playback rates and exports supporting up to 30 frames per second.</p>
+                </div>
+              </div>
+              <div class="feature-card-item">
+                <div class="feat-icon-badge">🖌️</div>
+                <div class="feat-details">
+                  <h5>Vector Shapes</h5>
+                  <p>Control ovals (ellipses) and rectangles smoothly with active brush settings.</p>
+                </div>
+              </div>
+              <div class="feature-card-item">
+                <div class="feat-icon-badge">📦</div>
+                <div class="feat-details">
+                  <h5>1080p MP4 & GIF</h5>
+                  <p>Export your finished creations instantly in 16:9 Landscape or 9:16 Portrait layouts.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 3: Developer Appreciation & Donation -->
+          <div class="onboarding-slide" data-slide-index="2" style="display: none;">
+            <h3 class="m-b-2 text-primary">Appreciate the Developer! ❤️</h3>
+            <p class="slide-description m-b-3">
+              This tool was designed and developed with care by <strong>Durgesh</strong>. If you love this application,
+              please consider showing your appreciation to support future updates and development!
+            </p>
+
+            <div class="appreciation-card">
+              <div class="qr-code-wrapper">
+                <img src="donation_qr.jpg" class="qr-code-image" alt="Durgesh UPI QR Code">
+                <div class="laser-scanner-line"></div>
+              </div>
+              <div class="donation-identifiers m-t-2">
+                <div class="dev-tag">Developer Name: <strong>Durgesh</strong></div>
+                <div class="upi-tag">UPI ID: <code>8791321313@upi</code></div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Navigation Footer -->
+        <div class="onboarding-controls m-t-4">
+          <button id="btn-onboarding-prev" class="btn btn-secondary btn-sm" style="visibility: hidden;">Back</button>
+
+          <div class="onboarding-slider-dots">
+            <span class="onboarding-dot active" data-slide-index="0"></span>
+            <span class="onboarding-dot" data-slide-index="1"></span>
+            <span class="onboarding-dot" data-slide-index="2"></span>
+          </div>
+
+          <button id="btn-onboarding-next" class="btn btn-primary btn-glow btn-sm">Next</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js?v=6"></script>
+</body>
+
+</html>
