@@ -1,6 +1,6 @@
-# 🎨 Stickman Animation Station
+# 🎨 STICKMAN Animation Station
 
-**Stickman Animation Station** is a premium, lightweight, and fully client-side frame-by-frame 2D vector animation studio. Designed for simplicity and speed, this app is fully optimized for launching on mobile (Google Play Store) or using directly in web browsers.
+**STICKMAN Animation Station** is a premium, lightweight, and fully client-side frame-by-frame 2D vector animation studio. Designed for simplicity and speed, this app is fully optimized for launching on mobile (Google Play Store) or using directly in web browsers.
 
 ## ✨ Features
 *   **Vector Drawing Tools**: Built-in Pencil, Brush, Eraser, Flood Fill, Straight Line, Ellipse (Oval/Disc), and Rectangle shape tools.
