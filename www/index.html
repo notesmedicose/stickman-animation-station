@@ -112,57 +112,16 @@
 
       <div class="divider"></div>
 
-      <!-- Export Menu -->
-      <div class="dropdown-wrapper">
-        <button id="btn-export-trigger" class="btn btn-primary btn-glow">
-          <svg viewBox="0 0 24 24" class="header-icon-svg" stroke="currentColor" stroke-width="2.5" fill="none"
-            stroke-linecap="round" stroke-linejoin="round">
-            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-            <polyline points="17 8 12 3 7 8"></polyline>
-            <line x1="12" y1="3" x2="12" y2="15"></line>
-          </svg>
-          <span class="btn-text">Export...</span>
-        </button>
-        <div id="export-dropdown" class="dropdown-menu">
-          <button id="btn-export-video-16-9" class="dropdown-item">
-            <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"
-              stroke-linecap="round" stroke-linejoin="round">
-              <rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"></rect>
-              <line x1="7" y1="2" x2="7" y2="22"></line>
-              <line x1="17" y1="2" x2="17" y2="22"></line>
-              <line x1="2" y1="12" x2="22" y2="12"></line>
-              <line x1="2" y1="7" x2="7" y2="7"></line>
-              <line x1="2" y1="17" x2="7" y2="17"></line>
-              <line x1="17" y1="17" x2="22" y2="17"></line>
-              <line x1="17" y1="7" x2="22" y2="7"></line>
-            </svg>
-            Export MP4 (16:9 Landscape 1080p)
-          </button>
-          <button id="btn-export-video-9-16" class="dropdown-item">
-            <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"
-              stroke-linecap="round" stroke-linejoin="round" style="transform: rotate(90deg);">
-              <rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"></rect>
-              <line x1="7" y1="2" x2="7" y2="22"></line>
-              <line x1="17" y1="2" x2="17" y2="22"></line>
-              <line x1="2" y1="12" x2="22" y2="12"></line>
-              <line x1="2" y1="7" x2="7" y2="7"></line>
-              <line x1="2" y1="17" x2="7" y2="17"></line>
-              <line x1="17" y1="17" x2="22" y2="17"></line>
-              <line x1="17" y1="7" x2="22" y2="7"></line>
-            </svg>
-            Export MP4 (9:16 Portrait 1080p)
-          </button>
-          <button id="btn-export-gif" class="dropdown-item">
-            <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"
-              stroke-linecap="round" stroke-linejoin="round">
-              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
-              <circle cx="8.5" cy="8.5" r="1.5"></circle>
-              <polyline points="21 15 16 10 5 21"></polyline>
-            </svg>
-            Export GIF Animation
-          </button>
-        </div>
-      </div>
+      <!-- Export Trigger -->
+      <button id="btn-export-trigger" class="btn btn-primary btn-glow" title="Export Animation to Video or GIF">
+        <svg viewBox="0 0 24 24" class="header-icon-svg" stroke="currentColor" stroke-width="2.5" fill="none"
+          stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+          <polyline points="17 8 12 3 7 8"></polyline>
+          <line x1="12" y1="3" x2="12" y2="15"></line>
+        </svg>
+        <span class="btn-text">Export...</span>
+      </button>
 
       <button id="btn-clear-all" class="btn btn-danger" title="Clear all frames and start over">
         <svg viewBox="0 0 24 24" class="header-icon-svg" stroke="currentColor" stroke-width="2" fill="none"
@@ -619,6 +578,63 @@
 
         <div class="modal-actions">
           <button class="btn btn-primary btn-close-modal w-full">Let's Draw!</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 1B. EXPORT OPTIONS MODAL -->
+  <div class="modal-overlay" id="modal-export">
+    <div class="modal-card" style="max-width: 420px;">
+      <div class="modal-header">
+        <h2>Export Animation</h2>
+        <button class="modal-close btn-close-modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p class="m-b-4 text-center" style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.4;">
+          Select your preferred export format below. MP4 renders high-definition videos, while GIF is perfect for lightweight sharing.
+        </p>
+        <div class="export-modal-buttons">
+          <button id="btn-export-video-16-9" class="btn btn-primary btn-glow" style="width: 100%; display: flex; align-items: center; justify-content: center; gap: 10px; padding: 12px; font-size: 0.9rem;">
+            <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none"
+              stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"></rect>
+              <line x1="7" y1="2" x2="7" y2="22"></line>
+              <line x1="17" y1="2" x2="17" y2="22"></line>
+              <line x1="2" y1="12" x2="22" y2="12"></line>
+              <line x1="2" y1="7" x2="7" y2="7"></line>
+              <line x1="2" y1="17" x2="7" y2="17"></line>
+              <line x1="17" y1="17" x2="22" y2="17"></line>
+              <line x1="17" y1="7" x2="22" y2="7"></line>
+            </svg>
+            Export MP4 (16:9 Landscape 1080p)
+          </button>
+          <button id="btn-export-video-9-16" class="btn btn-primary btn-glow" style="width: 100%; display: flex; align-items: center; justify-content: center; gap: 10px; padding: 12px; font-size: 0.9rem;">
+            <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none"
+              stroke-linecap="round" stroke-linejoin="round" style="transform: rotate(90deg);">
+              <rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"></rect>
+              <line x1="7" y1="2" x2="7" y2="22"></line>
+              <line x1="17" y1="2" x2="17" y2="22"></line>
+              <line x1="2" y1="12" x2="22" y2="12"></line>
+              <line x1="2" y1="7" x2="7" y2="7"></line>
+              <line x1="2" y1="17" x2="7" y2="17"></line>
+              <line x1="17" y1="17" x2="22" y2="17"></line>
+              <line x1="17" y1="7" x2="22" y2="7"></line>
+            </svg>
+            Export MP4 (9:16 Portrait 1080p)
+          </button>
+          <button id="btn-export-gif" class="btn btn-secondary" style="width: 100%; display: flex; align-items: center; justify-content: center; gap: 10px; padding: 12px; font-size: 0.9rem;">
+            <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none"
+              stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+              <circle cx="8.5" cy="8.5" r="1.5"></circle>
+              <polyline points="21 15 16 10 5 21"></polyline>
+            </svg>
+            Export GIF Animation
+          </button>
+        </div>
+        <div class="modal-actions m-t-4">
+          <button class="btn btn-secondary btn-close-modal w-full" style="padding: 10px;">Close</button>
         </div>
       </div>
     </div>

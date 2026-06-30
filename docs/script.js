@@ -1705,31 +1705,24 @@ function setupUIEvents() {
     }
   });
 
-  // Export Dialog trigger menus
+  // Export Dialog trigger
   const exportBtn = document.getElementById('btn-export-trigger');
-  const exportMenu = document.getElementById('export-dropdown');
-  exportBtn.addEventListener('click', (e) => {
-    e.stopPropagation();
-    exportMenu.classList.toggle('show');
+  const exportModal = document.getElementById('modal-export');
+  
+  exportBtn.addEventListener('click', () => {
+    openModal(exportModal);
   });
-  window.addEventListener('click', () => {
-    exportMenu.classList.remove('show');
-  });
-
-  function closeExportMenu() {
-    exportMenu.classList.remove('show');
-  }
 
   document.getElementById('btn-export-video-16-9').addEventListener('click', () => {
-    closeExportMenu();
+    closeModal(exportModal);
     exportToVideoFormat('16:9');
   });
   document.getElementById('btn-export-video-9-16').addEventListener('click', () => {
-    closeExportMenu();
+    closeModal(exportModal);
     exportToVideoFormat('9:16');
   });
   document.getElementById('btn-export-gif').addEventListener('click', () => {
-    closeExportMenu();
+    closeModal(exportModal);
     exportToGifFormat();
   });
 
