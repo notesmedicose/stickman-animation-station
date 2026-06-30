@@ -64,7 +64,7 @@
 
   /* Layout Heights */
   --header-height: clamp(36px, 5vh, 52px);
-  --timeline-height: clamp(50px, 8vh, 90px);
+  --timeline-height: clamp(90px, 13vh, 115px);
 }
 
 /* Light Theme overrides */
@@ -395,50 +395,6 @@ h6 {
   transform: translateY(-1px);
 }
 
-/* Dropdown Menu styling */
-.dropdown-wrapper {
-  position: relative;
-}
-
-.dropdown-menu {
-  position: absolute;
-  top: calc(100% + 8px);
-  right: 0;
-  background: var(--bg-panel-solid);
-  border: 1px solid var(--border-color);
-  border-radius: var(--radius-md);
-  padding: 6px;
-  min-width: 220px;
-  box-shadow: var(--shadow-lg);
-  display: none;
-  flex-direction: column;
-  gap: 4px;
-  z-index: 200;
-}
-
-.dropdown-menu.show {
-  display: flex;
-}
-
-.dropdown-item {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 10px 12px;
-  border: none;
-  background: transparent;
-  color: var(--text-main);
-  border-radius: var(--radius-sm);
-  font-size: 0.875rem;
-  text-align: left;
-  cursor: pointer;
-  transition: background var(--transition-fast);
-}
-
-.dropdown-item:hover {
-  background: var(--color-secondary-hover);
-}
-
 /* --- Layout Workspaces --- */
 .workspace-container {
   flex: 1;
@@ -447,8 +403,8 @@ h6 {
   flex-direction: column;
   padding: 10px;
   overflow: hidden;
-  height: calc(100vh - 48px - 80px);
-  /* Adjusted for header 48px and timeline 80px */
+  height: calc(100vh - var(--header-height) - var(--timeline-height));
+  /* Adjusted for header and timeline variables */
   width: 100%;
   max-width: 100vw;
   box-sizing: border-box;
@@ -1158,8 +1114,7 @@ span.checkered-icon {
 
 /* --- Timeline Ribbon (Bottom) --- */
 .timeline-container {
-  height: 80px;
-  /* Reduced from 130px */
+  height: var(--timeline-height);
   background: var(--bg-panel);
   border-top: 1px solid var(--border-color);
   backdrop-filter: blur(16px);
@@ -1206,10 +1161,8 @@ span.checkered-icon {
 
 /* Frame Cards inside Ribbon */
 .frame-card {
-  width: 80px;
-  /* Reduced from 110px */
-  height: 50px;
-  /* Reduced from 75px */
+  width: 110px;
+  height: 70px;
   background: var(--bg-card);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-sm);
@@ -1234,10 +1187,8 @@ span.checkered-icon {
 }
 
 .frame-card-canvas {
-  width: 70px;
-  /* Reduced from 94px */
-  height: 40px;
-  /* Reduced from 58px */
+  width: 98px;
+  height: 58px;
   background-color: white;
   border-radius: 4px;
   object-fit: contain;
@@ -1302,7 +1253,7 @@ span.checkered-icon {
 /* Timeline Insert Card */
 .btn-timeline-insert-here {
   width: 18px;
-  height: 50px;
+  height: 70px;
   border: 1px dashed var(--border-color);
   background: transparent;
   border-radius: var(--radius-sm);
@@ -1448,6 +1399,14 @@ kbd {
   grid-template-columns: 1fr 1fr;
   gap: 12px;
 }
+
+.export-modal-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 16px 0;
+}
+
 
 /* Progress bar export */
 .text-center {
@@ -2583,18 +2542,18 @@ body {
 }
 
 .frame-card {
-  width: clamp(40px, 7vw, 80px);
-  height: clamp(28px, 4vh, 50px);
+  width: clamp(90px, 12vw, 120px);
+  height: clamp(55px, 8vh, 75px);
 }
 
 .frame-card-canvas {
-  width: clamp(35px, 6vw, 70px);
-  height: clamp(22px, 3.5vh, 40px);
+  width: clamp(80px, 10vw, 108px);
+  height: clamp(45px, 6.5vh, 65px);
 }
 
 .btn-timeline-insert-here {
   width: clamp(14px, 1.5vw, 20px);
-  height: clamp(28px, 4vh, 50px);
+  height: clamp(55px, 8vh, 75px);
 }
 
 /* --- Fluid Modals --- */
@@ -2836,12 +2795,7 @@ body {
     height: clamp(13px, 1.6vw, 16px);
   }
 
-  /* Flip export dropdown to left to avoid off-screen */
-  .dropdown-menu {
-    right: auto;
-    left: 0;
-    min-width: 180px;
-  }
+  /* Export dropdown is now a centered fixed popup - no repositioning needed */
 
   /* Shrink logo icon box */
   .logo-icon {
@@ -2916,10 +2870,14 @@ body {
    BREAKPOINT: Very Short Screens / Landscape Phones (< 420px height)
    ========================================================================== */
 @media (max-height: 420px) {
+  :root {
+    --header-height: 32px;
+    --timeline-height: 72px;
+  }
 
   /* Ultra-compact header */
   .main-header {
-    height: 32px;
+    height: var(--header-height);
     padding: 0 clamp(4px, 1vw, 8px);
   }
 
@@ -2952,35 +2910,35 @@ body {
 
   /* Ultra-compact timeline */
   .timeline-container {
-    height: 44px;
-    padding: 2px 4px;
-    gap: 4px;
+    height: var(--timeline-height);
+    padding: 4px 8px;
+    gap: 8px;
   }
 
   .timeline-controls .btn {
-    height: 22px;
-    padding: 2px 6px;
-    font-size: 0.55rem;
+    height: 32px;
+    padding: 4px 8px;
+    font-size: 0.7rem;
   }
 
   .frame-card {
-    width: 36px;
-    height: 24px;
+    width: 76px;
+    height: 48px;
   }
 
   .frame-card-canvas {
-    width: 30px;
-    height: 18px;
+    width: 66px;
+    height: 38px;
   }
 
   .frame-card-badge {
-    font-size: 0.45rem;
-    padding: 0 2px;
+    font-size: 0.55rem;
+    padding: 0 3px;
   }
 
   .btn-timeline-insert-here {
-    width: 12px;
-    height: 24px;
+    width: 14px;
+    height: 48px;
   }
 
   /* Minimal workspace padding */
@@ -3086,11 +3044,9 @@ body {
   }
 }
 
-/* ==========================================================================
-   PORTRAIT LOCK - Only for narrow portrait screens (< 500px width)
-   ========================================================================== */
 @media (max-width: 500px) and (orientation: portrait) {
-  #portrait-lock-overlay {
+  /* Only show rotation lock if the active project is landscape (ratio-16-9) */
+  body.ratio-16-9 #portrait-lock-overlay {
     display: flex !important;
   }
 }

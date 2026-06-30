@@ -395,25 +395,26 @@ h6 {
   transform: translateY(-1px);
 }
 
-/* Dropdown Menu styling */
+/* Dropdown Menu styling - fixed popup to avoid canvas clipping */
 .dropdown-wrapper {
   position: relative;
 }
 
 .dropdown-menu {
-  position: absolute;
-  top: calc(100% + 8px);
-  right: 0;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   background: var(--bg-panel-solid);
   border: 1px solid var(--border-color);
-  border-radius: var(--radius-md);
-  padding: 6px;
-  min-width: 220px;
-  box-shadow: var(--shadow-lg);
+  border-radius: var(--radius-lg);
+  padding: 12px;
+  min-width: 260px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
   display: none;
   flex-direction: column;
-  gap: 4px;
-  z-index: 200;
+  gap: 6px;
+  z-index: 10000;
 }
 
 .dropdown-menu.show {
@@ -2836,12 +2837,7 @@ body {
     height: clamp(13px, 1.6vw, 16px);
   }
 
-  /* Flip export dropdown to left to avoid off-screen */
-  .dropdown-menu {
-    right: auto;
-    left: 0;
-    min-width: 180px;
-  }
+  /* Export dropdown is now a centered fixed popup - no repositioning needed */
 
   /* Shrink logo icon box */
   .logo-icon {

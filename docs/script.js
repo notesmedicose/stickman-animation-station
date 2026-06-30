@@ -8,6 +8,9 @@
 
 class Frame {
   constructor(width = 800, height = 450) {
+    // Clamp to minimum dimensions to prevent degenerate canvases
+    width = Math.max(1, width);
+    height = Math.max(1, height);
     this.canvas = document.createElement('canvas');
     this.canvas.width = width;
     this.canvas.height = height;
@@ -225,13 +228,22 @@ function selectColor(color) {
   preview.style.backgroundColor = color;
 }
 
-// Helper to get exact canvas coordinates from mouse events
+// Helper to get exact canvas coordinates from mouse/touch events
 function getMouseCoordinates(e) {
   const rect = drawingCanvas.getBoundingClientRect();
 
-  // Handle touch events
-  const clientX = e.touches ? e.touches[0].clientX : e.clientX;
-  const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+  // Handle touch events: use changedTouches for touchend, touches for touchstart/touchmove
+  let clientX, clientY;
+  if (e.changedTouches && e.changedTouches.length > 0) {
+    clientX = e.changedTouches[0].clientX;
+    clientY = e.changedTouches[0].clientY;
+  } else if (e.touches && e.touches.length > 0) {
+    clientX = e.touches[0].clientX;
+    clientY = e.touches[0].clientY;
+  } else {
+    clientX = e.clientX;
+    clientY = e.clientY;
+  }
 
   return {
     x: Math.round((clientX - rect.left) * (drawingCanvas.width / rect.width)),
@@ -401,6 +413,8 @@ function floodFillActiveFrame(startX, startY) {
   if (colorsMatch(targetRgba, fillColorRgba)) return;
 
   const stack = [[startX, startY]];
+  let pixelsFilled = 0;
+  const MAX_PIXELS = 500000; // Safety limit: 500K pixels max
 
   while (stack.length > 0) {
     const [cx, cy] = stack.pop();
@@ -412,6 +426,13 @@ function floodFillActiveFrame(startX, startY) {
       data[idx + 1] = fillColorRgba[1];
       data[idx + 2] = fillColorRgba[2];
       data[idx + 3] = fillColorRgba[3];
+      pixelsFilled++;
+
+      // Safety limit to prevent stack overflow / memory exhaustion
+      if (pixelsFilled > MAX_PIXELS) {
+        console.warn("Flood fill reached max pixel limit (" + MAX_PIXELS + "). Stopping.");
+        break;
+      }
 
       if (cx > 0) stack.push([cx - 1, cy]);
       if (cx < width - 1) stack.push([cx + 1, cy]);
@@ -548,7 +569,7 @@ function selectFrame(index) {
 }
 
 function addNewFrame(insertAt = -1) {
-  const newFrame = new Frame();
+  const newFrame = new Frame(drawingCanvas.width, drawingCanvas.height);
 
   if (insertAt === -1) {
     state.frames.push(newFrame);
@@ -982,9 +1003,12 @@ function startGifRender() {
   const frameImages = [];
   const bg = state.canvasBgColor === 'transparent' ? '#ffffff' : state.canvasBgColor;
 
+  // Use actual frame dimensions for GIF export to match project ratio
+  const frameW = drawingCanvas.width;
+  const frameH = drawingCanvas.height;
   const tempCanvas = document.createElement('canvas');
-  tempCanvas.width = 800;
-  tempCanvas.height = 500;
+  tempCanvas.width = frameW;
+  tempCanvas.height = frameH;
   const tempCtx = tempCanvas.getContext('2d');
 
   state.frames.forEach(frame => {
@@ -999,8 +1023,8 @@ function startGifRender() {
 
   gifshot.createGIF({
     images: frameImages,
-    gifWidth: 800,
-    gifHeight: 500,
+    gifWidth: frameW,
+    gifHeight: frameH,
     interval: 1 / state.fps, // Seconds per frame
     numFrames: state.frames.length,
     sampleInterval: 8,
@@ -1076,7 +1100,7 @@ function showRewardAd(onAdComplete) {
 
   skipBtn.onclick = () => {
     cleanupAd();
-    alert("Ad skipped! You must watch the Sponsored video to unlock your video download.");
+    // Simply close the ad - user can try exporting again later
   };
 
   adInterval = setInterval(() => {
@@ -1193,10 +1217,6 @@ function triggerDownload(url, filename) {
   link.click();
   document.body.removeChild(link);
 }
-
-// ==========================================================================
-// 8. LOCAL STORAGE PROJECT PERSISTENCE
-// ==========================================================================
 
 // ==========================================================================
 // 8. LOCAL STORAGE PROJECT PERSISTENCE
@@ -1508,6 +1528,16 @@ function changeProjectRatio(ratio) {
     frame.redoStack = [];
   });
 
+  // Auto-lock device orientation to match project ratio
+  if (screen.orientation && screen.orientation.lock) {
+    const orientation = ratio === '9:16' ? 'portrait' : 'landscape';
+    screen.orientation.lock(orientation).then(() => {
+      console.log(`Orientation locked to ${orientation} for ${ratio} project.`);
+    }).catch(err => {
+      console.log("Auto orientation lock skipped (requires fullscreen): ", err);
+    });
+  }
+
   // Sync editor display
   syncCanvasWithActiveFrame();
   drawTimeline();
@@ -1686,9 +1716,22 @@ function setupUIEvents() {
     exportMenu.classList.remove('show');
   });
 
-  document.getElementById('btn-export-video-16-9').addEventListener('click', () => exportToVideoFormat('16:9'));
-  document.getElementById('btn-export-video-9-16').addEventListener('click', () => exportToVideoFormat('9:16'));
-  document.getElementById('btn-export-gif').addEventListener('click', exportToGifFormat);
+  function closeExportMenu() {
+    exportMenu.classList.remove('show');
+  }
+
+  document.getElementById('btn-export-video-16-9').addEventListener('click', () => {
+    closeExportMenu();
+    exportToVideoFormat('16:9');
+  });
+  document.getElementById('btn-export-video-9-16').addEventListener('click', () => {
+    closeExportMenu();
+    exportToVideoFormat('9:16');
+  });
+  document.getElementById('btn-export-gif').addEventListener('click', () => {
+    closeExportMenu();
+    exportToGifFormat();
+  });
 
   // Aspect Ratio Selection Change
   document.getElementById('project-aspect-ratio').addEventListener('change', (e) => {
@@ -1817,7 +1860,10 @@ function closeActiveModals() {
   if (adModal && adModal.classList.contains('show')) {
     return;
   }
-  document.querySelectorAll('.modal-overlay').forEach(m => m.classList.remove('show'));
+  document.querySelectorAll('.modal-overlay').forEach(m => {
+    m.classList.remove('show');
+    m.style.display = 'none';
+  });
 }
 
 // ==========================================================================

@@ -64,7 +64,7 @@
 
   /* Layout Heights */
   --header-height: clamp(36px, 5vh, 52px);
-  --timeline-height: clamp(90px, 11vh, 120px); /* Increased for bigger timeline bar */
+  --timeline-height: clamp(50px, 8vh, 90px);
 }
 
 /* Light Theme overrides */
@@ -395,25 +395,26 @@ h6 {
   transform: translateY(-1px);
 }
 
-/* Dropdown Menu styling */
+/* Dropdown Menu styling - fixed popup to avoid canvas clipping */
 .dropdown-wrapper {
   position: relative;
 }
 
 .dropdown-menu {
-  position: absolute;
-  top: calc(100% + 8px);
-  right: 0;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   background: var(--bg-panel-solid);
   border: 1px solid var(--border-color);
-  border-radius: var(--radius-md);
-  padding: 6px;
-  min-width: 220px;
-  box-shadow: var(--shadow-lg);
+  border-radius: var(--radius-lg);
+  padding: 12px;
+  min-width: 260px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
   display: none;
   flex-direction: column;
-  gap: 4px;
-  z-index: 200;
+  gap: 6px;
+  z-index: 10000;
 }
 
 .dropdown-menu.show {
@@ -1158,12 +1159,13 @@ span.checkered-icon {
 
 /* --- Timeline Ribbon (Bottom) --- */
 .timeline-container {
-  height: 110px;             /* Increased from 80px */
+  height: 80px;
+  /* Reduced from 130px */
   background: var(--bg-panel);
   border-top: 1px solid var(--border-color);
   backdrop-filter: blur(16px);
   display: flex;
-  padding: 10px 20px;
+  padding: 8px 16px;
   gap: 16px;
   z-index: 90;
   align-items: center;
@@ -1184,9 +1186,9 @@ span.checkered-icon {
 }
 
 .timeline-controls .btn {
-  padding: 10px 16px;        /* Increased from 6px 10px */
-  font-size: 0.82rem;        /* Increased from 0.75rem */
-  height: 42px;              /* Increased from 32px */
+  padding: 6px 10px;
+  font-size: 0.75rem;
+  height: 32px;
 }
 
 .timeline-reel-wrapper {
@@ -1205,8 +1207,10 @@ span.checkered-icon {
 
 /* Frame Cards inside Ribbon */
 .frame-card {
-  width: 110px;              /* Increased from 80px */
-  height: 72px;              /* Increased from 50px */
+  width: 80px;
+  /* Reduced from 110px */
+  height: 50px;
+  /* Reduced from 75px */
   background: var(--bg-card);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-sm);
@@ -1231,8 +1235,10 @@ span.checkered-icon {
 }
 
 .frame-card-canvas {
-  width: 96px;               /* Increased from 70px */
-  height: 58px;              /* Increased from 40px */
+  width: 70px;
+  /* Reduced from 94px */
+  height: 40px;
+  /* Reduced from 58px */
   background-color: white;
   border-radius: 4px;
   object-fit: contain;
@@ -1241,13 +1247,13 @@ span.checkered-icon {
 
 .frame-card-badge {
   position: absolute;
-  bottom: 3px;
-  left: 3px;
+  bottom: 2px;
+  left: 2px;
   background: rgba(0, 0, 0, 0.6);
   color: white;
-  font-size: 0.65rem;        /* Slightly larger */
+  font-size: 0.6rem;
   font-weight: 700;
-  padding: 1px 5px;
+  padding: 0px 4px;
   border-radius: var(--radius-sm);
   z-index: 10;
 }
@@ -1271,9 +1277,9 @@ span.checkered-icon {
 }
 
 .frame-action-btn {
-  width: 20px;               /* Increased from 16px */
-  height: 20px;              /* Increased from 16px */
-  font-size: 0.7rem;
+  width: 16px;
+  height: 16px;
+  font-size: 0.65rem;
   border-radius: var(--radius-sm);
   background: rgba(0, 0, 0, 0.75);
   color: white;
@@ -2831,12 +2837,7 @@ body {
     height: clamp(13px, 1.6vw, 16px);
   }
 
-  /* Flip export dropdown to left to avoid off-screen */
-  .dropdown-menu {
-    right: auto;
-    left: 0;
-    min-width: 180px;
-  }
+  /* Export dropdown is now a centered fixed popup - no repositioning needed */
 
   /* Shrink logo icon box */
   .logo-icon {
