@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">STICKMAN Animation Station</string>
+    <string name="title_activity_main">STICKMAN Animation Station</string>
+    <string name="package_name">com.notesmedicose.stickmananimation</string>
+    <string name="custom_url_scheme">com.notesmedicose.stickmananimation</string>
+</resources>
