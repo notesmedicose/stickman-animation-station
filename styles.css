@@ -1430,15 +1430,27 @@ kbd {
 .btn-heart:hover {
   background: rgba(239, 68, 68, 0.1) !important;
   color: #ff6b6b !important;
-  transform: scale(1.1);
+  transform: scale(1.12) !important;
 }
 .btn-heart .heart-svg {
-  filter: drop-shadow(0 0 4px rgba(239, 68, 68, 0.4));
-  animation: heartPulse 2s infinite ease-in-out;
+  filter: drop-shadow(0 0 5px rgba(239, 68, 68, 0.6));
+  animation: heartPulse 1.8s infinite ease-in-out;
+}
+.migrated-heart {
+  width: 38px !important;
+  height: 38px !important;
+  margin-left: 10px;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+}
+.migrated-heart svg {
+  width: 22px !important; /* Scale up the heart icon size inside header logo */
+  height: 22px !important;
 }
 @keyframes heartPulse {
   0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.08); }
+  50% { transform: scale(1.12); }
 }
 
 /* --- Onboarding Slider Modal --- */
