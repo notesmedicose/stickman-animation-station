@@ -154,11 +154,8 @@ window.addEventListener('DOMContentLoaded', () => {
   syncCanvasWithActiveFrame();
   drawTimeline();
   
-  // Show welcome modal on first launch
-  if (!localStorage.getItem('animation_station_visited')) {
-    openModal(document.getElementById('modal-help'));
-    localStorage.setItem('animation_station_visited', 'true');
-  }
+  // Initialize onboarding flow for new users and donations
+  initOnboarding();
 
   // Attempt orientation lock to landscape on mobile layout upon first interaction
   const tryLockOrientation = () => {
@@ -1599,4 +1596,99 @@ function setupKeyboardShortcuts() {
       document.getElementById('tool-bucket').click();
     }
   });
+}
+
+// Onboarding Slider logic
+let currentOnboardingSlideIndex = 0;
+
+function initOnboarding() {
+  const modal = document.getElementById('modal-onboarding');
+  const prevBtn = document.getElementById('btn-onboarding-prev');
+  const nextBtn = document.getElementById('btn-onboarding-next');
+  const dots = document.querySelectorAll('.onboarding-dot');
+  const slides = document.querySelectorAll('.onboarding-slide');
+  const supportBtn = document.getElementById('btn-support');
+  const closeBtn = document.getElementById('btn-close-onboarding');
+
+  if (!modal || !nextBtn) return;
+
+  function showSlide(index) {
+    currentOnboardingSlideIndex = index;
+    
+    // Toggle slides visibility
+    slides.forEach((slide, idx) => {
+      slide.style.display = idx === index ? 'block' : 'none';
+      slide.classList.toggle('active', idx === index);
+    });
+
+    // Toggle dots active class
+    dots.forEach((dot, idx) => {
+      dot.classList.toggle('active', idx === index);
+    });
+
+    // Handle Back Button visibility
+    if (index === 0) {
+      prevBtn.style.visibility = 'hidden';
+    } else {
+      prevBtn.style.visibility = 'visible';
+    }
+
+    // Handle Next/Complete Button text
+    if (index === slides.length - 1) {
+      nextBtn.textContent = 'Start Animating! 🚀';
+    } else {
+      nextBtn.textContent = 'Next';
+    }
+  }
+
+  // Next Slide Click
+  nextBtn.addEventListener('click', () => {
+    if (currentOnboardingSlideIndex < slides.length - 1) {
+      showSlide(currentOnboardingSlideIndex + 1);
+    } else {
+      // Completed onboarding
+      localStorage.setItem('stickman_onboarding_completed', 'true');
+      closeModal(modal);
+    }
+  });
+
+  // Prev Slide Click
+  prevBtn.addEventListener('click', () => {
+    if (currentOnboardingSlideIndex > 0) {
+      showSlide(currentOnboardingSlideIndex - 1);
+    }
+  });
+
+  // Dots Click
+  dots.forEach((dot, idx) => {
+    dot.addEventListener('click', () => {
+      const targetIndex = parseInt(dot.getAttribute('data-slide-index'), 10);
+      showSlide(targetIndex);
+    });
+  });
+
+  // Heart Support Button: opens the donation slide (Slide 3)
+  if (supportBtn) {
+    supportBtn.addEventListener('click', () => {
+      openModal(modal);
+      showSlide(2); // Index 2 is the donation/appreciation slide
+    });
+  }
+
+  // Close Onboarding sets completed storage flag as well so it doesn't pop up again
+  if (closeBtn) {
+    closeBtn.addEventListener('click', () => {
+      localStorage.setItem('stickman_onboarding_completed', 'true');
+      closeModal(modal);
+    });
+  }
+
+  // Auto-launch check on first load
+  const completedFlag = localStorage.getItem('stickman_onboarding_completed');
+  if (!completedFlag) {
+    setTimeout(() => {
+      openModal(modal);
+      showSlide(0);
+    }, 800); // Small delay to wow user on load
+  }
 }

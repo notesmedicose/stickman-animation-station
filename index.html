@@ -3,10 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>STICKMAN Animation Station | Easy Cartoon Maker</title>
+  <title>STICKMAN Animation Station | Professional Cartoon & Flipbook Maker</title>
   
   <!-- Meta tags for SEO & branding -->
-  <meta name="description" content="A gorgeous, easy-to-use frame-by-frame animation station. Features 35% opacity onion-skinning, easy drawing controls, and instant video/GIF exports.">
+  <meta name="description" content="Create stunning frame-by-frame stickman cartoons with STICKMAN Animation Station. Features professional 35% Onion Skinning, 30 FPS playback, and 1080p MP4/GIF exports. Designed by Durgesh.">
+  <meta name="keywords" content="stickman animation, cartoon maker, frame by frame, 2d animation, onion skinning, 1080p mp4, gif creator, flipbook, durgesh, web animator">
+  <meta name="author" content="Durgesh">
+  <meta name="theme-color" content="#8b5cf6">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="STICKMAN Animation Station | Professional Cartoon Maker">
+  <meta property="og:description" content="Create, preview, and export high-definition stickman animations at up to 30 FPS. Drag-and-drop vector shape tools, 35% ghost onion skinning.">
+  <meta property="og:image" content="donation_qr.jpg">
+  
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:title" content="STICKMAN Animation Station | Professional Cartoon Maker">
+  <meta property="twitter:description" content="Create, preview, and export high-definition stickman animations at up to 30 FPS. Drag-and-drop vector shape tools, 35% ghost onion skinning.">
   
   <!-- Google Fonts: Outfit (headings) & Inter (UI details) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -75,6 +89,10 @@
       <button id="btn-toggle-theme" class="btn btn-icon" title="Toggle Theme (Light/Dark)">
         <svg id="theme-icon-sun" viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" style="display: none;"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
         <svg id="theme-icon-moon" viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+      </button>
+      
+      <button id="btn-support" class="btn btn-icon btn-heart" title="Support & Appreciate Developer (Durgesh)">
+        <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="heart-svg"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
       </button>
       
       <button id="btn-show-help" class="btn btn-icon" title="Keyboard Shortcuts & Help">
@@ -521,6 +539,109 @@
       </div>
       <h2>Rotate Your Device</h2>
       <p>STICKMAN Animation Station requires Landscape Mode to run. Please turn your phone or tablet sideways!</p>
+    </div>
+  </div>
+
+  <!-- 7. ONBOARDING SLIDER MODAL -->
+  <div class="modal-overlay" id="modal-onboarding" style="display: none;">
+    <div class="modal-card onboarding-card">
+      <div class="modal-header">
+        <h2 id="onboarding-modal-title">Welcome to STICKMAN</h2>
+        <button class="modal-close btn-close-modal" id="btn-close-onboarding">&times;</button>
+      </div>
+      <div class="modal-body text-center">
+        
+        <!-- Slides Container -->
+        <div class="onboarding-slides-wrapper">
+          
+          <!-- Slide 1: Welcome & Best Wishes -->
+          <div class="onboarding-slide active" data-slide-index="0">
+            <div class="slide-welcome-graphic">
+              <svg viewBox="0 0 100 100" width="80" height="80">
+                <circle cx="50" cy="25" r="12" stroke="var(--color-primary)" stroke-width="3.5" fill="none" class="pulse-head"/>
+                <line x1="50" y1="37" x2="50" y2="65" stroke="var(--text-main)" stroke-width="3"/>
+                <line x1="50" y1="45" x2="28" y2="32" stroke="var(--text-main)" stroke-width="3" stroke-linecap="round"/>
+                <line x1="50" y1="45" x2="72" y2="32" stroke="var(--text-main)" stroke-width="3" stroke-linecap="round"/>
+                <line x1="50" y1="65" x2="35" y2="90" stroke="var(--text-main)" stroke-width="3" stroke-linecap="round"/>
+                <line x1="50" y1="65" x2="65" y2="90" stroke="var(--text-main)" stroke-width="3" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <h3 class="m-b-2 text-primary">Best Wishes for Your Creative Journey! ✨</h3>
+            <p class="slide-description">
+              Welcome to <strong>STICKMAN Animation Station</strong>! We wish you the absolute best as you explore the world of animation. Whether you want to sketch, create short memes, or design action stickman battle sequences, this app is fully geared to make the process smooth and easy. Let your creativity run wild!
+            </p>
+          </div>
+          
+          <!-- Slide 2: Feature Explanations -->
+          <div class="onboarding-slide" data-slide-index="1" style="display: none;">
+            <h3 class="m-b-3 text-primary">Professional Features</h3>
+            <div class="features-onboarding-grid">
+              <div class="feature-card-item">
+                <div class="feat-icon-badge">🧅</div>
+                <div class="feat-details">
+                  <h5>Onion Skinning</h5>
+                  <p>Ghost previous/next frames with adjustable 35% opacity to trace motion fluidly.</p>
+                </div>
+              </div>
+              <div class="feature-card-item">
+                <div class="feat-icon-badge">🎬</div>
+                <div class="feat-details">
+                  <h5>30 FPS Speed</h5>
+                  <p>Flexible animation playback rates and exports supporting up to 30 frames per second.</p>
+                </div>
+              </div>
+              <div class="feature-card-item">
+                <div class="feat-icon-badge">🖌️</div>
+                <div class="feat-details">
+                  <h5>Vector Shapes</h5>
+                  <p>Control ovals (ellipses) and rectangles smoothly with active brush settings.</p>
+                </div>
+              </div>
+              <div class="feature-card-item">
+                <div class="feat-icon-badge">📦</div>
+                <div class="feat-details">
+                  <h5>1080p MP4 & GIF</h5>
+                  <p>Export your finished creations instantly in 16:9 Landscape or 9:16 Portrait layouts.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Slide 3: Developer Appreciation & Donation -->
+          <div class="onboarding-slide" data-slide-index="2" style="display: none;">
+            <h3 class="m-b-2 text-primary">Appreciate the Developer! ❤️</h3>
+            <p class="slide-description m-b-3">
+              This tool was designed and developed with care by <strong>Durgesh</strong>. If you love this application, please consider showing your appreciation to support future updates and development!
+            </p>
+            
+            <div class="appreciation-card">
+              <div class="qr-code-wrapper">
+                <img src="donation_qr.jpg" class="qr-code-image" alt="Durgesh UPI QR Code">
+                <div class="laser-scanner-line"></div>
+              </div>
+              <div class="donation-identifiers m-t-2">
+                <div class="dev-tag">Developer Name: <strong>Durgesh</strong></div>
+                <div class="upi-tag">UPI ID: <code>8791321313@upi</code></div>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+        
+        <!-- Navigation Footer -->
+        <div class="onboarding-controls m-t-4">
+          <button id="btn-onboarding-prev" class="btn btn-secondary btn-sm" style="visibility: hidden;">Back</button>
+          
+          <div class="onboarding-slider-dots">
+            <span class="onboarding-dot active" data-slide-index="0"></span>
+            <span class="onboarding-dot" data-slide-index="1"></span>
+            <span class="onboarding-dot" data-slide-index="2"></span>
+          </div>
+          
+          <button id="btn-onboarding-next" class="btn btn-primary btn-glow btn-sm">Next</button>
+        </div>
+        
+      </div>
     </div>
   </div>
 

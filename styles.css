@@ -1421,3 +1421,209 @@ kbd {
   font-weight: 500;
   color: var(--text-muted);
 }
+
+/* --- Support Heart Button --- */
+.btn-heart {
+  color: #ef4444 !important;
+  transition: all var(--transition-fast) !important;
+}
+.btn-heart:hover {
+  background: rgba(239, 68, 68, 0.1) !important;
+  color: #ff6b6b !important;
+  transform: scale(1.1);
+}
+.btn-heart .heart-svg {
+  filter: drop-shadow(0 0 4px rgba(239, 68, 68, 0.4));
+  animation: heartPulse 2s infinite ease-in-out;
+}
+@keyframes heartPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+}
+
+/* --- Onboarding Slider Modal --- */
+.onboarding-card {
+  width: 500px !important;
+  max-width: 95%;
+  border: 1.5px solid var(--color-primary-glow) !important;
+  box-shadow: 0 10px 40px rgba(139, 92, 246, 0.25) !important;
+}
+
+.onboarding-slides-wrapper {
+  min-height: 250px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.onboarding-slide {
+  width: 100%;
+  animation: fadeInSlide 0.3s ease-in-out;
+}
+
+@keyframes fadeInSlide {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.slide-welcome-graphic {
+  margin-bottom: 12px;
+  display: flex;
+  justify-content: center;
+}
+.slide-welcome-graphic svg {
+  filter: drop-shadow(0 0 12px var(--color-primary-glow));
+}
+.pulse-head {
+  animation: headPulse 1.5s infinite alternate ease-in-out;
+}
+@keyframes headPulse {
+  0% { r: 11px; stroke-width: 3.5; }
+  100% { r: 13px; stroke-width: 4.5; filter: drop-shadow(0 0 6px var(--color-primary)); }
+}
+
+.slide-description {
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+/* Features grid in slide 2 */
+.features-onboarding-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  width: 100%;
+  margin-top: 10px;
+}
+.feature-card-item {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  padding: 10px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  text-align: left;
+  transition: all var(--transition-fast);
+}
+.feature-card-item:hover {
+  border-color: var(--color-primary-glow);
+  transform: translateY(-2px);
+  background: var(--bg-card-hover);
+}
+.feat-icon-badge {
+  font-size: 1.2rem;
+  background: var(--color-secondary-hover);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.feat-details h5 {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-main);
+  margin-bottom: 2px;
+}
+.feat-details p {
+  font-size: 0.65rem;
+  line-height: 1.35;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+/* Appreciation & UPI QR Card in slide 3 */
+.appreciation-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  background: var(--bg-card);
+  border: 1.5px solid var(--border-color);
+  padding: 14px;
+  border-radius: var(--radius-lg);
+  margin-top: 10px;
+  width: 100%;
+  box-shadow: inset 0 0 12px rgba(255, 255, 255, 0.02);
+}
+.qr-code-wrapper {
+  position: relative;
+  width: 130px;
+  height: 130px;
+  padding: 4px;
+  background: #ffffff;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+.qr-code-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+.laser-scanner-line {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: #ef4444;
+  box-shadow: 0 0 8px #ef4444, 0 0 12px #ef4444;
+  animation: scanLaser 3s infinite ease-in-out;
+  z-index: 5;
+}
+@keyframes scanLaser {
+  0%, 100% { top: 0%; }
+  50% { top: 100%; }
+}
+.donation-identifiers {
+  text-align: center;
+}
+.dev-tag {
+  font-size: 0.8rem;
+  color: var(--text-main);
+  margin-bottom: 2px;
+}
+.upi-tag {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+.upi-tag code {
+  color: var(--color-primary);
+  background: var(--color-secondary-hover);
+  padding: 2px 6px;
+  border-radius: var(--radius-sm);
+  font-family: monospace;
+}
+
+/* Slider Controls & dots */
+.onboarding-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+.onboarding-slider-dots {
+  display: flex;
+  gap: 6px;
+}
+.onboarding-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--border-color);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+.onboarding-dot.active {
+  background: var(--color-primary);
+  transform: scale(1.2);
+  box-shadow: 0 0 6px var(--color-primary-glow);
+}
