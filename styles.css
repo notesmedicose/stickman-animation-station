@@ -495,11 +495,6 @@ h1, h2, h3, h4, h5, h6 {
   background-color: #9b5de5;
 }
 
-/* Action Undo/Redo Sidebar box */
-.actions-panel {
-  display: flex;
-  gap: 8px;
-}
 .w-full {
   width: 100%;
 }
@@ -538,10 +533,49 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* Canvas Stack Wrapper */
+.canvas-floating-toolbar {
+  position: absolute;
+  left: -36px; /* Pinned exactly to the left edge of the canvas container */
+  top: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  z-index: 100;
+}
+
+.btn-floating-action {
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius-sm);
+  background: var(--bg-panel);
+  border: 1px solid var(--border-color);
+  color: var(--text-main);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+.btn-floating-action:hover:not(:disabled) {
+  background: var(--color-secondary-hover);
+  color: var(--color-primary);
+  transform: scale(1.08);
+}
+.btn-floating-action:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+.btn-floating-action svg {
+  width: 14px;
+  height: 14px;
+}
+
 .canvas-wrapper-outer {
   position: relative;
   border-radius: var(--radius-lg);
-  overflow: hidden;
+  overflow: visible; /* Changed from hidden to show floating toolbar */
   box-shadow: var(--canvas-shadow);
   border: 1.5px solid var(--border-color);
   display: flex;
@@ -556,6 +590,8 @@ h1, h2, h3, h4, h5, h6 {
   position: relative;
   width: 100%;
   height: 100%;
+  border-radius: var(--radius-lg); /* Rounded corners shifted here */
+  overflow: hidden; /* Canvas clipping corners shifted here */
   cursor: crosshair;
 }
 

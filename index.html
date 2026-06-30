@@ -162,17 +162,6 @@
           </label>
         </div>
       </div>
-      
-      <div class="panel-section actions-panel">
-        <button id="btn-undo" class="btn btn-secondary w-full" title="Undo (Ctrl+Z)" disabled>
-          <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7v6h6"></path><path d="M21 17a9 9 0 0 0-9-9 9 9 0 0 0-6 2.3L3 13"></path></svg>
-          Undo
-        </button>
-        <button id="btn-redo" class="btn btn-secondary w-full" title="Redo (Ctrl+Y)" disabled>
-          <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M21 7v6h-6"></path><path d="M3 17a9 9 0 0 1 9-9 9 9 0 0 1 6 2.3l3 2.7"></path></svg>
-          Redo
-        </button>
-      </div>
     </aside>
     
     <!-- CENTER: CANVAS AREA -->
@@ -187,6 +176,16 @@
       
       <!-- Container for canvases stacked -->
       <div class="canvas-wrapper-outer">
+        <!-- Floating toolbar pinned next to canvas left edge -->
+        <div class="canvas-floating-toolbar">
+          <button id="btn-undo" class="btn-floating-action" title="Undo (Ctrl+Z)" disabled>
+            <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7v6h6"></path><path d="M21 17a9 9 0 0 0-9-9 9 9 0 0 0-6 2.3L3 13"></path></svg>
+          </button>
+          <button id="btn-redo" class="btn-floating-action" title="Redo (Ctrl+Y)" disabled>
+            <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M21 7v6h-6"></path><path d="M3 17a9 9 0 0 1 9-9 9 9 0 0 1 6 2.3l3 2.7"></path></svg>
+          </button>
+        </div>
+        
         <div class="canvas-wrapper" id="canvas-container">
           <!-- Onion Skin Canvas (Underneath) -->
           <canvas id="onion-skin-canvas" class="canvas-layer onion-skin-layer" width="800" height="500"></canvas>
